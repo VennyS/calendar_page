@@ -1,3 +1,4 @@
+import 'package:calendar_gymatech/filter_page.dart';
 import 'package:calendar_gymatech/widgets/calendar.dart';
 import 'package:calendar_gymatech/widgets/filter.dart';
 import 'package:calendar_gymatech/widgets/schedule_element.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: MainPage());
+        home: const MainPage());
   }
 }
 
@@ -38,7 +39,12 @@ class MainPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           actions: [
-            filterButton(),
+            FilterButton(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FilterPage()),
+              ),
+            ),
             const SizedBox(
               width: 16,
             )
@@ -58,24 +64,40 @@ class MainPage extends StatelessWidget {
           child: Column(
             children: [
               const CalendarCard(),
-              // ScheduleElement(
-              //     gtoName: "Аэробика",
-              //     trainerName: "Василий Кошкин",
-              //     description: "Тренер",
-              //     timeTag: CustomTag(
-              //       leftIcon: SvgPicture.asset(
-              //         "assets/svgs/clock.svg",
-              //       ),
-              //       showleftIcon: true,
-              //       disabledBackgroundColor: const Color(0xFFD6B5FF),
-              //       text: Text(
-              //         "20:00-21:00",
-              //         style: GoogleFonts.inter(
-              //             fontWeight: FontWeight.w600, fontSize: 12),
-              //       ),
-              //     ))
+              const SizedBox(
+                height: 12,
+              ),
+              ScheduleElement(
+                  variant: ScheduleVariant.standart,
+                  gtoName: "Аэробика",
+                  trainerName: "Василий Кошкин",
+                  description: "Тренер",
+                  timeTag: CustomTag(
+                    leftIcon: SvgPicture.asset(
+                      "assets/svgs/clock.svg",
+                    ),
+                    showleftIcon: true,
+                    disabledBackgroundColor: const Color(0xFFD6B5FF),
+                    text: Text(
+                      "20:00-21:00",
+                      style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w600, fontSize: 12),
+                    ),
+                  ))
             ],
           ),
         ));
+  }
+
+  // TODO:
+  Widget nothingWasFound() {
+    return Row(
+      children: [
+        SvgPicture.asset("assets/svgs/i.svg"),
+        const SizedBox(
+          width: 12,
+        ),
+      ],
+    );
   }
 }
