@@ -38,7 +38,7 @@ class FilterPage extends StatelessWidget {
           ],
         ),
         body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
             child: Align(
               alignment: Alignment.bottomCenter,
               child: CustomButtonWidget(
