@@ -435,11 +435,9 @@ packages:
   widgets:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "43023a1d3433fbbbe401abef0a3089bf20edd7c3"
-      url: "https://github.com/VennyS/widgets"
-    source: git
+      path: "S:\\Important\\Self-development\\Programming\\flutter\\widgets"
+      relative: false
+    source: path
     version: "0.0.6"
   xdg_directories:
     dependency: transitive

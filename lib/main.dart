@@ -1,10 +1,10 @@
-import 'package:calendar_gymatech/api/api_service.dart';
-import 'package:calendar_gymatech/api/config.dart';
+import 'package:widgets/api/api_service.dart';
+import 'package:widgets/api/config.dart';
 import 'package:calendar_gymatech/cubit/schedule_cubit.dart';
 import 'package:calendar_gymatech/filter_page.dart';
 import 'package:calendar_gymatech/widgets/calendar.dart';
-import 'package:calendar_gymatech/widgets/filter.dart';
 import 'package:calendar_gymatech/widgets/schedule_element.dart';
+import 'package:widgets/filter_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

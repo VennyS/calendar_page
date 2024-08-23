@@ -1,12 +1,12 @@
-import 'package:calendar_gymatech/api/api_service.dart';
 import 'package:calendar_gymatech/widgets/schedule_element.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:calendar_gymatech/models/list_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:widgets/api/api_service.dart';
 import 'package:widgets/custom_tag.dart';
+import 'package:widgets/models/list_item.dart';
 
 part 'schedule_state.dart';
 
