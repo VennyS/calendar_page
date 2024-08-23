@@ -16,24 +16,23 @@ class ApiService {
     baseUrl = url;
   }
 
-  Future<List<ListItem>> fetchListItems() async {
-    final response =
-        await http.get(Uri.parse('$baseUrl/test/group_training_object/0'));
+  Future<List<ListItem>> fetchListItems(int weekNumber) async {
+    final response = await http
+        .get(Uri.parse('$baseUrl/test/group_training_object/$weekNumber'));
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data =
           json.decode(utf8.decode(response.bodyBytes));
       List<ListItem> items = [];
 
-      data.forEach((key, value) {
-        if (value is Map<String, dynamic>) {
-          value.forEach((time, activities) {
-            if (activities is List) {
-              for (var activity in activities) {
-                items.add(ListItem.fromJson(activity));
-              }
-            }
-          });
+      // Проходите по ключам времени
+      data.forEach((timeKey, activitiesList) {
+        // activitiesList - это список, содержащий активности в это время
+        if (activitiesList is List) {
+          for (var activity in activitiesList) {
+            // Преобразуйте каждый элемент в объект ListItem
+            items.add(ListItem.fromJson(activity));
+          }
         }
       });
 
