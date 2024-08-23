@@ -11,6 +11,7 @@ class ScheduleElement extends StatelessWidget {
   final String description;
   final CustomTag timeTag;
   final ScheduleVariant variant;
+  final DateTime date;
 
   const ScheduleElement(
       {super.key,
@@ -19,7 +20,8 @@ class ScheduleElement extends StatelessWidget {
       required this.trainerName,
       required this.description,
       required this.timeTag,
-      required this.variant});
+      required this.variant,
+      required this.date});
 
   @override
   Widget build(BuildContext context) {
