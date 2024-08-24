@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:widgets/api/api_service.dart';
 import 'package:widgets/custom_tag.dart';
 import 'package:widgets/models/list_item.dart';
+import 'package:widgets/logger/app_logger.dart';
 
 part 'schedule_state.dart';
 
@@ -22,18 +23,16 @@ class ScheduleCubit extends Cubit<ScheduleState> {
       _selectedDay; // Метод для получения выбранного дня
 
   Future<void> loadSchedule() async {
-    print("Loading schedule..."); // Debug message
+    AppLogger().i("Loading schedule..."); // Debug message
     try {
       emit(ScheduleLoading());
       List<ListItem> data =
           await ApiService().fetchListItems(currentWeekNumber);
-      print("Data loaded: $data"); // Debug message
+      AppLogger().i("Data loaded: $data"); // Debug message
 
       List<ScheduleElement> scheduleElements = data.map((item) {
         return ScheduleElement(
-          gtoName: item.name,
-          trainerName: item.coachName,
-          description: "тренер",
+          item: item,
           date: item.dateDateTime,
           timeTag: CustomTag(
             disabledBackgroundColor: const Color(0xFFD6B5FF),
@@ -52,7 +51,7 @@ class ScheduleCubit extends Cubit<ScheduleState> {
       this.scheduleElements = scheduleElements;
       emit(ScheduleLoaded(data: scheduleElements));
     } catch (e) {
-      print('Error loading schedule: $e'); // Debug message
+      AppLogger().e('Error loading schedule: $e'); // Debug message
       emit(ScheduleError());
     }
   }
