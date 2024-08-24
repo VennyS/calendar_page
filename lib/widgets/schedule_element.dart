@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:widgets/custom_tag.dart';
+import 'package:widgets/models/list_item.dart';
 
 enum ScheduleVariant { standart, skeleton }
 
 class ScheduleElement extends StatelessWidget {
   final Color? backgroundColor;
-  final String gtoName;
-  final String trainerName;
-  final String description;
+  final ListItem item;
   final CustomTag timeTag;
   final ScheduleVariant variant;
   final DateTime date;
@@ -16,12 +15,10 @@ class ScheduleElement extends StatelessWidget {
   const ScheduleElement(
       {super.key,
       this.backgroundColor,
-      required this.gtoName,
-      required this.trainerName,
-      required this.description,
       required this.timeTag,
       required this.variant,
-      required this.date});
+      required this.date,
+      required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +42,7 @@ class ScheduleElement extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    gtoName,
+                    item.name,
                     style: GoogleFonts.inter(
                         fontWeight: FontWeight.w700, fontSize: 18),
                   ),
@@ -63,14 +60,14 @@ class ScheduleElement extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        trainerName,
+                        item.coachName,
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                         ),
                       ),
                       Text(
-                        description,
+                        "Тренер", // TODO: description
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w600,
                           fontSize: 12,
