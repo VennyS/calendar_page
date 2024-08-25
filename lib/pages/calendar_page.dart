@@ -1,7 +1,7 @@
 import 'package:calendar_gymatech/typedef.dart';
-import 'package:calendar_gymatech/cubit/schedule_cubit.dart';
 import 'package:calendar_gymatech/pages/filter_page.dart';
-import 'package:calendar_gymatech/widgets/calendar.dart';
+import 'package:widgets/calendar.dart';
+import 'package:widgets/cubit/schedule_cubit.dart';
 import 'package:widgets/filter_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
