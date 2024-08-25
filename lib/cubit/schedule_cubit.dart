@@ -19,16 +19,14 @@ class ScheduleCubit extends Cubit<ScheduleState> {
 
   ScheduleCubit() : super(ScheduleInitial());
 
-  DateTime get selectedDay =>
-      _selectedDay; // Метод для получения выбранного дня
+  DateTime get selectedDay => _selectedDay;
 
   Future<void> loadSchedule() async {
-    AppLogger().i("Loading schedule..."); // Debug message
+    AppLogger.i("Loading schedule...");
     try {
       emit(ScheduleLoading());
-      List<ListItem> data =
-          await ApiService().fetchListItems(currentWeekNumber);
-      AppLogger().i("Data loaded: $data"); // Debug message
+      List<ListItem> data = await ApiService.fetchListItems(currentWeekNumber);
+      AppLogger.i("Data loaded: $data"); // Debug message
 
       List<ScheduleElement> scheduleElements = data.map((item) {
         return ScheduleElement(
@@ -51,19 +49,19 @@ class ScheduleCubit extends Cubit<ScheduleState> {
       this.scheduleElements = scheduleElements;
       emit(ScheduleLoaded(data: scheduleElements));
     } catch (e) {
-      AppLogger().e('Error loading schedule: $e'); // Debug message
+      AppLogger.e('Error loading schedule: $e');
       emit(ScheduleError());
     }
   }
 
   void updateWeek(int weeks) {
-    currentWeekNumber += weeks; // Обновляем номер недели
-    loadSchedule(); // Загружаем данные для новой недели
+    currentWeekNumber += weeks;
+    loadSchedule();
   }
 
   void updateSelectedDay(DateTime newDay) {
-    _selectedDay = newDay; // Обновляем выбранный день
+    _selectedDay = newDay;
     emit(ScheduleSelectedDay(selectedDay: newDay));
-    emit(ScheduleLoaded(data: scheduleElements)); // Эмитируем новое состояние
+    emit(ScheduleLoaded(data: scheduleElements));
   }
 }
