@@ -2,7 +2,6 @@ import 'package:calendar_gymatech/typedef.dart';
 import 'package:calendar_gymatech/cubit/schedule_cubit.dart';
 import 'package:calendar_gymatech/pages/filter_page.dart';
 import 'package:calendar_gymatech/widgets/calendar.dart';
-import 'package:calendar_gymatech/widgets/schedule_element.dart';
 import 'package:widgets/filter_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +11,7 @@ import 'package:intl/intl.dart';
 import 'package:widgets/custom_tag.dart';
 import 'package:widgets/models/list_item.dart';
 import 'package:widgets/models/spots.dart';
+import 'package:widgets/schedule_element.dart';
 
 class CalendarPage extends StatelessWidget {
   final GtoPageBuilder gtoPageBuilder;
